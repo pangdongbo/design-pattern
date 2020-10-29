@@ -1,32 +1,30 @@
-package com.powersmart.platform.principle.isp;
+package com.powersmart.platform.principle.isp.improve;
 
 /**
- * @description: 违反接口隔离示例
+ * @description:
  * @author: 庞东博
- * @create: 2020-10-26 18:51
+ * @create: 2020-10-29 19:31
  **/
-public class ViolationInterfaceSepraratePrinciple {
+public class InterfaceSepraratePrinciple {
 
 	public static void main(String[] args) {
 		Leader xiaoqi = new Leader("肖琪");
 		xiaoqi.onDuty();
 		xiaoqi.schedule();
-		xiaoqi.execute();
 		xiaoqi.offDuty();
 
 		Subordinate dufeilong = new Subordinate("杜飞龙");
 		dufeilong.onDuty();
-		dufeilong.schedule();
-		dufeilong.execute();
+		dufeilong.doWork();
 		dufeilong.offDuty();
 	}
 
 }
 
 /**
- * 员工接口
+ * 员工类
  */
-interface IEmployee {
+interface Employee {
 
 	/**
 	 * 上班
@@ -38,21 +36,26 @@ interface IEmployee {
 	 */
 	void offDuty();
 
-	/**
-	 * 给下属安排任务
-	 */
-	void schedule();
-
-	/**
-	 * 执行领导安排的任务
-	 */
-	void execute();
 }
 
 /**
- * 领导类
+ * 领导的职责
  */
-class Leader implements IEmployee {
+interface ILeader {
+	void schedule();
+}
+
+/**
+ * 领导的职责
+ */
+interface ISubordinate {
+	void doWork();
+}
+
+/**
+ * 领导
+ */
+class Leader implements ILeader {
 
 	/**
 	 * 姓名
@@ -84,18 +87,12 @@ class Leader implements IEmployee {
 		System.out.println(this.name + "安排任务给下属");
 	}
 
-	/**
-	 * 员工执行任务
-	 */
-	public void execute() {
-		System.out.println(this.name + "是领导，不需要执行任务");
-	}
 }
 
 /**
- * 领导类
+ * 下属
  */
-class Subordinate implements IEmployee {
+class Subordinate implements ISubordinate {
 
 	/**
 	 * 姓名
@@ -121,16 +118,9 @@ class Subordinate implements IEmployee {
 	}
 
 	/**
-	 * 安排任务
-	 */
-	public void schedule() {
-		System.out.println(this.name + "是下属，不需要安排任务");
-	}
-
-	/**
 	 * 员工执行任务
 	 */
-	public void execute() {
+	public void doWork() {
 		System.out.println(this.name + "执行领导安排的任务");
 	}
 }
