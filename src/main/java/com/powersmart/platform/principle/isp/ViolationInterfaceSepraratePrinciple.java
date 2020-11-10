@@ -1,7 +1,7 @@
 package com.powersmart.platform.principle.isp;
 
 /**
- * @description: 违反接口隔离示例
+ * @description: 违反接口隔离示例：一个员干了不应该干的事情
  * @author: 庞东博
  * @create: 2020-10-26 18:51
  **/

@@ -1,7 +1,7 @@
 package com.powersmart.platform.principle.isp.improve;
 
 /**
- * @description:
+ * @description: 符合依赖倒置原则
  * @author: 庞东博
  * @create: 2020-10-29 19:31
  **/
